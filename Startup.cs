@@ -25,8 +25,9 @@ namespace ichoose_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
             services.AddCors();
+            services.AddControllers();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,11 +38,11 @@ namespace ichoose_api
                 app.UseDeveloperExceptionPage();
           
             }
-      app.UseCors(options =>
-      {
-        options.WithOrigins("http://localhost:8080").AllowAnyHeader().AllowAnyMethod();
+            app.UseCors(options =>
+            {
+              options.WithOrigins("http://localhost:8080").AllowAnyHeader().AllowAnyMethod();
 
-      });
+            });
 
             app.UseHttpsRedirection();
 
