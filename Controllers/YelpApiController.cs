@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.Json;
+using ichoose_api.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-//using Newtonsoft.Json;
-// This is a simple web API with no database. Don't really need MVC structure...
+
 namespace ichoose_api
 {
   // /api => this route gets the images
@@ -15,22 +10,17 @@ namespace ichoose_api
   public class YelpApiController : ControllerBase
   {
     [HttpPost]
-    public  ActionResult SplashAPI(jsonData foodsList)
+    public  ActionResult SplashAPI([FromBody]FoodsData FoodsList)
     {
 
-      Console.WriteLine(foodsList.Foods);
-      foreach (var yoyo in foodsList.Foods)
+      foreach (var yoyo in FoodsList.Foods)
       {
         Console.WriteLine(yoyo);
       }
-
       return Ok("www");
     }
   }
 
-  public class jsonData
-  {
-    public List<string> Foods { get; set; }
-  }
+
 
 }
